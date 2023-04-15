@@ -14,7 +14,9 @@
 
 ```
 cd /disk1/kohya-scripts
-accelerate launch train_network.py --config_file /disk1/train/kohya-LoRA-template/config.toml --dataset_config /disk1/train/kohya-LoRA-template/dataset.toml
+accelerate launch train_network.py \
+  --config_file /disk1/train/kohya-LoRA-template/config.toml \
+  --dataset_config /disk1/train/kohya-LoRA-template/dataset.toml
 ```
 
 
