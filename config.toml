@@ -1,32 +1,58 @@
 [general]
-# path
-output_name = "kotaro01"
-# pretrained_model_name_or_path = "/disk1/data/model/2d/nai-white-background.safetensors"
+#########################
+# 出力設定
+#########################
+# 学習モデル 生成モデルと同じが1番良い 配布など汎用目的ならNAI
 pretrained_model_name_or_path = "/disk1/data/model/2d/nai-fp16.safetensors"
-output_dir = "/disk1/stable-diffusion-webui/extensions/sd-webui-additional-networks/models/lora/"
-# 固定
-seed = 99
+output_name = "metan"
+output_dir = "./"
+# 指定したステップ数まで学習する 学習枚数、学習対象にもよる
+max_train_steps = 500
+# 何エポックごとにモデルを保存するか
+save_every_n_epochs = 10
+
+#########################
+# 性能設定
+#########################
+# U-Netの学習率 0.0001～0.005
+unet_lr = 0.0001
+# Text Encoderの学習率 0.00001～0.00005 unet_lrよりも低く設定すべき
+text_encoder_lr = 0.00001
+# 学習次元数 1〜128 多いほどより多くの学習ができるが過学習に陥りやすく学習速度も落ちるので多ければいいものではない
+network_dim = 8
+# network_dimの半分が目安
+network_alpha = 4
+# オプティマイザ 色々あるがAdamW8bitが1番学習が速い
+optimizer_type = "AdamW8bit"
+# 学習率スケジューラー 一定の周期で学習率をリセットする
+lr_scheduler = "cosine_with_restarts"
+# リセットする周期 小さいほど周期は早くなる
+lr_scheduler_num_cycles = 1
+# Min-SNR　過学習を抑え学習効率を高める 1〜20 小さいほど効果が強い
+min_snr_gamma = 5 
+network_module = "networks.lora"
+# Stable diffusion 1.xなら2を指定する
+clip_skip = 2
+# ########################
+# 高速化設定
+# ########################
 xformers = true
 mixed_precision = "fp16"
 save_precision = "fp16"
+# VRAMに余裕があればtrue 学習速度が上がる
 persistent_data_loader_workers = true
-clip_skip = 2
-network_module = "networks.lora"
-# tuning
-# noise_offset = 0.1
-save_every_n_epochs = 10
-optimizer_type = "AdamW8bit"
-lr_scheduler = "cosine_with_restarts"
-lr_scheduler_num_cycles = 1
-text_encoder_lr = 0.00001
-# text_encoder_lr = 0.000001
-unet_lr = 0.0001
-network_dim = 8
-network_alpha = 4
-max_train_steps = 1000
-min_snr_gamma = 2
-# vae_batch_size = 2
-# sample_prompt
-sample_sampler = 'euler_a'
-sample_prompts = "/disk1/train/kotaro/sample_prompt.txt"
-sample_every_n_epochs = 10
+
+#########################
+# サンプル生成設定
+#########################
+# 指定ステップごとに学習時点の画像を生成してくれる
+# LoRAの場合過学習に陥りやすく最終成果物が1番良いとはなりづらいのでサンプル画像から判断するのに使用する
+# 出力先は output_dir と同じ
+# sample_sampler = 'euler_a'
+# sample_prompts = "sample_prompt.txt"
+# sample_every_n_epochs = 10
+
+#########################
+# その他設定
+#########################
+seed = 99

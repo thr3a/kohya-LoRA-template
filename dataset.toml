@@ -1,0 +1,31 @@
+[[datasets]]
+# 1,2,4など 多いほど学習効率は上がるがVRAMが必要
+batch_size = 1
+bucket_no_upscale = true
+enable_bucket = true
+resolution = 512
+keep_tokens = 1
+caption_extension = '.txt'
+
+[[datasets.subsets]]
+image_dir = '/disk1/train/kohya-LoRA-template/train'
+class_tokens = 'metan girl'
+num_repeats = 1
+# 画像の色合いをランダムにわずかに変更
+color_aug	 = false
+# 画像をランダムに左右反転する
+flip_aug = true
+# 画像をランダムに切り取って学習
+random_crop = false
+# 学習時にプロンプトをシャッフルして汎用性を高める
+shuffle_caption = true
+
+# 正則化画像を使用する場合
+# [[datasets.subsets]]
+# image_dir = '/disk1/train/kohya-LoRA-template/reg'
+# is_reg = true
+# class_tokens = 'girl'
+# num_repeats = 1
+# color_aug = false
+# random_crop = false
+# flip_aug = false

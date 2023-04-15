@@ -1,8 +1,2 @@
 # prompt 1
-masterpiece, (best quality:1.2), togetsu kotaro, 1boy, solo,black suit, necktie --n (low quality:1.2), (worst quality:1.2), bad anatomy,bad composition, poor, low effort --w 512 --h 512 --l 7 --s 20
-# prompt 2
-masterpiece, (best quality:1.2), togetsu kotaro, 1boy, solo,black suit, necktie --n (low quality:1.2), (worst quality:1.2), bad anatomy,bad composition, poor, low effort --w 512 --h 512 --l 7 --s 21
-# prompt 3
-masterpiece, (best quality:1.2), togetsu kotaro, 1boy, solo,black suit, necktie --n (low quality:1.2), (worst quality:1.2), bad anatomy,bad composition, poor, low effort --w 512 --h 512 --l 7 --s 22
-# prompt 4
-masterpiece, (best quality:1.2), togetsu kotaro, 1boy, solo,black suit, necktie --n (low quality:1.2), (worst quality:1.2), bad anatomy,bad composition, poor, low effort --w 512 --h 512 --l 7 --s 23
+masterpiece, (best quality:1.2), metan, 1girl, solo, (bikini:1.1),beach --n (low quality:1.2), (worst quality:1.2), bad anatomy,bad composition, poor, low effort --w 512 --h 512 --l 7 --s 20
