@@ -1,0 +1,32 @@
+[general]
+# path
+output_name = "kotaro01"
+# pretrained_model_name_or_path = "/disk1/data/model/2d/nai-white-background.safetensors"
+pretrained_model_name_or_path = "/disk1/data/model/2d/nai-fp16.safetensors"
+output_dir = "/disk1/stable-diffusion-webui/extensions/sd-webui-additional-networks/models/lora/"
+# 固定
+seed = 99
+xformers = true
+mixed_precision = "fp16"
+save_precision = "fp16"
+persistent_data_loader_workers = true
+clip_skip = 2
+network_module = "networks.lora"
+# tuning
+# noise_offset = 0.1
+save_every_n_epochs = 10
+optimizer_type = "AdamW8bit"
+lr_scheduler = "cosine_with_restarts"
+lr_scheduler_num_cycles = 1
+text_encoder_lr = 0.00001
+# text_encoder_lr = 0.000001
+unet_lr = 0.0001
+network_dim = 8
+network_alpha = 4
+max_train_steps = 1000
+min_snr_gamma = 2
+# vae_batch_size = 2
+# sample_prompt
+sample_sampler = 'euler_a'
+sample_prompts = "/disk1/train/kotaro/sample_prompt.txt"
+sample_every_n_epochs = 10
